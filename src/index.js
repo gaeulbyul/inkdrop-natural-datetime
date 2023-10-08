@@ -27,8 +27,8 @@ function parserByLocale(locale_) {
 }
 
 function parse(datestr_) {
-  const locale = inkdrop.config.get('inkdrop-natural-datetime.localeToParsing')
-  const preferForwardDate = inkdrop.config.get('inkdrop-natural-datetime.preferForwardDate')
+  const locale = inkdrop.config.get('natural-datetime.localeToParsing')
+  const preferForwardDate = inkdrop.config.get('natural-datetime.preferForwardDate')
   let datestr = datestr_
   let forwardDate = preferForwardDate
   if (datestr.startsWith('!')) {
@@ -47,13 +47,13 @@ function parse(datestr_) {
 }
 
 function format(dayjsDatetime) {
-  const locale = inkdrop.config.get('inkdrop-natural-datetime.localeToFormatting')
-  const format = inkdrop.config.get('inkdrop-natural-datetime.dayjsFormat')
+  const locale = inkdrop.config.get('natural-datetime.localeToFormatting')
+  const format = inkdrop.config.get('natural-datetime.dayjsFormat')
   if (locale != 'en' && knownLocales.dayjs.includes(locale)) {
     try {
       require('dayjs/locale/' + locale)
     } catch (err) {
-      console.error('[inkdrop-natural-datetime] failed to load locale %s with %o', locale, err)
+      console.error('[natural-datetime] failed to load locale %s with %o', locale, err)
     }
   }
   const localizedDate = dayjsDatetime.locale(locale)
@@ -61,7 +61,7 @@ function format(dayjsDatetime) {
 }
 
 function handleChange(cm, changeObj) {
-  if (!inkdrop.config.get('inkdrop-natural-datetime.expandAngleBracketNotation')) {
+  if (!inkdrop.config.get('natural-datetime.expandAngleBracketNotation')) {
     return
   }
   const { text } = changeObj
@@ -122,7 +122,7 @@ function activate() {
     codeMirror.on('change', handleChange)
   })
   convertSelectionCommand = inkdrop.commands.add(document.body, {
-    'inkdrop-natural-datetime:convert-selection': handleConvertSelection,
+    'natural-datetime:convert-selection': handleConvertSelection,
   })
 }
 

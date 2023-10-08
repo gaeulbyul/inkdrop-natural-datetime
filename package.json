@@ -1,5 +1,5 @@
 {
-	"name": "inkdrop-natural-datetime",
+	"name": "natural-datetime",
 	"version": "0.0.0",
 	"description": "Inkdrop plugin to insert datetime with natural language",
 	"main": "./src/index.js",
