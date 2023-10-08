@@ -1,0 +1,10 @@
+{
+  "context-menu": {
+    ".CodeMirror": [
+      {
+        "label": "[inkdrop-natural-datetime] Convert selected texts into formal date",
+        "command": "inkdrop-natural-datetime:convert-selection"
+      }
+    ]
+  }
+}
